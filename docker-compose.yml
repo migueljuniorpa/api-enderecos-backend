@@ -1,0 +1,54 @@
+version: '3.9'
+
+networks:
+  revendamais:
+    driver: bridge
+
+services:
+  php:
+    build:
+      context: ./
+      dockerfile: docker/Dockerfile
+    container_name: teste-revendamais-backend
+    restart: unless-stopped
+    working_dir: /var/www/
+    volumes:
+      - ./:/var/www
+    networks:
+      - revendamais
+
+  nginx:
+    image: nginx:stable-alpine
+    container_name: nginx
+    restart: unless-stopped
+    ports:
+      - "8088:80"
+    volumes:
+      - ./:/var/www
+      - ./docker/docker-compose/nginx:/etc/nginx/conf.d/
+    depends_on:
+      - php
+      - mariadb
+    networks:
+      - revendamais
+
+  mariadb:
+    image: mariadb:10.6
+    container_name: mariadb
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "4306:3306"
+    volumes:
+      - ./docker/docker-compose/mysql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_DATABASE: revendamais_db
+      MYSQL_USER: revendamais
+      MYSQL_PASSWORD: revendamais
+      MYSQL_ROOT_PASSWORD: revendamais
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - revendamais
+
+
