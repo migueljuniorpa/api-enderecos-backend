@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\FindByZipcode;
 use App\Http\Requests\FuzzySearch;
 use App\Http\Requests\Id;
-use App\Models\Addresses;
-use Illuminate\Http\Request;
 use App\Http\Requests\CreateAddress;
 use App\Http\Requests\UpdateAddress;
 use App\Service\AddressesService;
