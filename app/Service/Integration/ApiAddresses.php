@@ -2,7 +2,7 @@
 
 namespace App\Service\Integration;
 
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\Client\Response;
 use Illuminate\Support\Facades\Http;
 
 class ApiAddresses
@@ -24,21 +24,21 @@ class ApiAddresses
     {
         $address = Http::get(sprintf($this->config['addresses'], $zipcode));
 
-        if(!$address->ok()) {
-            return [];
-        }
-
-        return $this->parseResponse($address->json());
+        return $this->parseResponse($address);
     }
 
     /**
      * parse response to api default design
      *
-     * @param array $data
+     * @param Response $data
      * @return array
      */
-    public function parseResponse(array $data): array
+    public function parseResponse(Response $data): array
     {
+        if(!$data->ok()) {
+            return [];
+        }
+
         return [
             'zipcode'      => (int)$data['cep'],
             'state'        => $data['state'],

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateAddress;
 use App\Http\Requests\UpdateAddress;
-use App\Models\Addresses;
 use App\Service\AddressesService;
 use Illuminate\Http\JsonResponse;
 
