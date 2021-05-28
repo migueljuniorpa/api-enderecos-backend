@@ -21,4 +21,5 @@ interface AddressesRepositoryInterface
 
     public function findAddressByZipcode(int $zipcode): ?Addresses;
 
+    public function fuzzySearch(string $string): Collection;
 }

@@ -82,6 +82,12 @@ class AddressesService
         return $this->repository->restore($id);
     }
 
+    /**
+     * find address by zipcode
+     *
+     * @param int $zipcode
+     * @return array
+     */
     public function findAddressByZipcode(int $zipcode): array
     {
         $data = $this->repository->findAddressByZipcode($zipcode);
@@ -91,5 +97,16 @@ class AddressesService
         }
 
         return $data->toArray();
+    }
+
+    /**
+     * find the address by street using any single word
+     *
+     * @param string $string
+     * @return array
+     */
+    public function fuzzySearch(string $string): array
+    {
+        return $this->repository->fuzzySearch($string)->toArray();
     }
 }

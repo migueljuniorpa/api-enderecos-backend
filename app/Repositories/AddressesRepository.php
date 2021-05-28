@@ -101,4 +101,15 @@ class AddressesRepository implements AddressesRepositoryInterface
             'street',
         ])->where('zipcode', $zipcode)->first();
     }
+
+    /**
+     * find the address by street using any single word
+     *
+     * @param string $string
+     * @return array
+     */
+    public function fuzzySearch(string $string): Collection
+    {
+        return $this->model->where('street', 'like', "%$string%")->get();
+    }
 }
