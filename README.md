@@ -33,7 +33,7 @@ Comandos para liberar permissões nas pastas
 * chmod -R 775 storage
 * chmod -R 775 bootstrap/cache
 
-## Comandos
+## Comandos outros
 Execute os comandos seguintes comandos na ordem
 
 * composer install
