@@ -52,12 +52,11 @@ class AddressesService
      * update the address
      *
      * @param array $data
-     * @param int $id
      * @return Addresses
      */
-    public function update(array $data, int $id): Addresses
+    public function update(array $data): Addresses
     {
-        return $this->repository->update($data, $id);
+        return $this->repository->update($data);
     }
 
     /**

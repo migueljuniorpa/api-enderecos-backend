@@ -13,7 +13,7 @@ interface AddressesRepositoryInterface
 
     public function create(array $data): Addresses;
 
-    public function update(array $data, int $id): Addresses;
+    public function update(array $data): Addresses;
 
     public function destroy(int $id): bool;
 

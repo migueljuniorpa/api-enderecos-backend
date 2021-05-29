@@ -54,11 +54,11 @@ class AddressesRepository implements AddressesRepositoryInterface
      * @param int $id
      * @return Addresses
      */
-    public function update(array $data, int $id): Addresses
+    public function update(array $data): Addresses
     {
-        $this->model->find($id)->update($data);
+        $this->model->find($data['id'])->update($data);
 
-        return $this->model->find($id);
+        return $this->model->find($data['id']);
     }
 
     /**

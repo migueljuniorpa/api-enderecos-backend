@@ -24,6 +24,7 @@ class UpdateAddress extends FormRequest
     public function rules()
     {
         return [
+            'id'           => 'required|integer',
             'zipcode'      => 'required|min:8|max:8',
             'state'        => 'required|min:2|max:2',
             'city'         => 'required|min:2|max:150',

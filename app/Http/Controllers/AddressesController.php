@@ -9,6 +9,7 @@ use App\Http\Requests\CreateAddress;
 use App\Http\Requests\UpdateAddress;
 use App\Service\AddressesService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
 
 class AddressesController extends Controller
 {
@@ -73,13 +74,12 @@ class AddressesController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateAddress $request
-     * @param int $id
      * @return JsonResponse
      */
-    public function update(UpdateAddress $request, int $id): JsonResponse
+    public function update(UpdateAddress $request): JsonResponse
     {
         try {
-            $data = $this->addressesService->update($request->validated(), $id);
+            $data = $this->addressesService->update($request->validated());
 
             return $this->success('Endereço atualizado com sucesso!', $data->toArray());
         } catch (\Throwable $throwable) {

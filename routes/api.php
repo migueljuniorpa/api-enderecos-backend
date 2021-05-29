@@ -19,16 +19,16 @@ Route::group(['middleware' => ['json.response'], 'prefix' => 'addresses', 'as' =
 
     Route::post('/store', [AddressesController::class, 'store'])->name('store');
 
-    Route::put('/update/{addresses}', [AddressesController::class, 'update'])->name('update');
+    Route::put('/update', [AddressesController::class, 'update'])->name('update');
 
-    Route::delete('/delete/{addresses}', [AddressesController::class, 'destroy'])->name('destroy');
+    Route::delete('/delete', [AddressesController::class, 'destroy'])->name('destroy');
 
-    Route::patch('/restore/{addresses}', [AddressesController::class, 'restore'])->name('restore');
-
-    Route::get('/findAddressByZipcode', [AddressesController::class, 'findAddressByZipcode'])->name('findAddressByZipcode');
-
-    Route::get('/search', [AddressesController::class, 'fuzzySearch'])->name('fuzzySearch');
+    Route::patch('/restore', [AddressesController::class, 'restore'])->name('restore');
 
     Route::get('/find', [AddressesController::class, 'find'])->name('find');
+
+    Route::get('/find/zipcode', [AddressesController::class, 'findAddressByZipcode'])->name('findAddressByZipcode');
+
+    Route::get('/search', [AddressesController::class, 'fuzzySearch'])->name('fuzzySearch');
 });
 
