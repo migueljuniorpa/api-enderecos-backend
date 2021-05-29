@@ -7,11 +7,17 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Projeto
+# Projeto
 Projeto de API de endereços para o Brasil, caso seja utilizado um CEP de outro pais não irá retornar o endereço.
 
+# Tecnologias
+* Docker
+* Laravel
+* Composer
+* Git
+* MariaDB
 
-## Instalação
+# Instalação
 * Altere o nome do arquivo de .env.example para .env
 * Execute o seguite comando: sudo docker-compose up --build -d
 * Após o build acesse o docker "teste-revendamais-backend" como seguinte comando
