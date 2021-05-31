@@ -28,8 +28,8 @@ class UpdateAddress extends FormRequest
             'zipcode'      => 'required|min:8|max:8',
             'state'        => 'required|min:2|max:2',
             'city'         => 'required|min:2|max:150',
-            'neighborhood' => 'required|min:1|max:150',
-            'street'       => 'required|min:1|max:150',
+            'neighborhood' => 'nullable|min:1|max:150',
+            'street'       => 'nullable|min:1|max:150',
         ];
     }
 }
