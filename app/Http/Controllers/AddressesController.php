@@ -32,7 +32,7 @@ class AddressesController extends Controller
 
             return $this->success('Endereços encontrados com sucesso!', $data->toArray());
         } catch (\Throwable $throwable) {
-            return $this->error('Não foi possível encontrar o endereço!', [], 200);
+            return $this->error('Não foi possível encontrar o endereço!', []);
         }
     }
 
@@ -49,7 +49,7 @@ class AddressesController extends Controller
 
             return $this->success('Endereço encontrado com sucesso!', $data->toArray());
         } catch (\Throwable $throwable) {
-            return $this->error('Não foi possível encontrar o endereço!', [], 200);
+            return $this->error('Não foi possível encontrar o endereço!', []);
         }
     }
 
@@ -66,7 +66,7 @@ class AddressesController extends Controller
 
             return $this->success('Endereço salvo com sucesso!', $data->toArray());
         } catch (\Throwable $throwable) {
-            return $this->error('Não foi possível salvar o endereço!', [], 200);
+            return $this->error('Não foi possível salvar o endereço!', []);
         }
     }
 
@@ -83,7 +83,7 @@ class AddressesController extends Controller
 
             return $this->success('Endereço atualizado com sucesso!', $data->toArray());
         } catch (\Throwable $throwable) {
-            return $this->error('Não foi possível atualizar o endereço!', [], 200);
+            return $this->error('Não foi possível atualizar o endereço!', []);
         }
     }
 
@@ -100,7 +100,7 @@ class AddressesController extends Controller
 
             return $this->success('Endereço deletado com sucesso!', []);
         } catch (\Throwable $throwable) {
-            return $this->error('Não foi possível deletar o endereço!', [], 200);
+            return $this->error('Não foi possível deletar o endereço!', []);
         }
     }
 
@@ -117,7 +117,7 @@ class AddressesController extends Controller
 
             return $this->success('Endereço recuperado com sucesso!', $data->toArray());
         } catch (\Throwable $throwable) {
-            return $this->error('Não foi possível restaurar o endereço!', [], 200);
+            return $this->error('Não foi possível restaurar o endereço!', []);
         }
     }
 
@@ -149,9 +149,13 @@ class AddressesController extends Controller
         try {
             $data = $this->addressesService->fuzzySearch($request->get('word'));
 
+            if(empty($data)) {
+                return $this->warning('Nenhum endereço encontrado!', $data);
+            }
+
             return $this->success('Endereços recuperados com sucesso!', $data);
         } catch (\Throwable $throwable) {
-            return $this->error('Não foi possível recuperar os endereços!', [], 200);
+            return $this->error('Não foi possível recuperar os endereços!', []);
         }
     }
 }

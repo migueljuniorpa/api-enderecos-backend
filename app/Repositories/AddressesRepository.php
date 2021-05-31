@@ -106,7 +106,7 @@ class AddressesRepository implements AddressesRepositoryInterface
      * find the address by street using any single word
      *
      * @param string $string
-     * @return array
+     * @return Collection
      */
     public function fuzzySearch(string $string): Collection
     {

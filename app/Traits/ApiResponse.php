@@ -26,7 +26,7 @@ trait ApiResponse
             $code
         );
     }
-    
+
     /**
      * Return an error JSON response.
      *
@@ -48,4 +48,24 @@ trait ApiResponse
         );
     }
 
+    /**
+     * Return an error JSON response.
+     *
+     * @param string $message
+     * @param array  $data
+     * @param int    $code
+     *
+     * @return JsonResponse
+     */
+    protected function warning(string $message, array $data = [], int $code = 200): JsonResponse
+    {
+        return response()->json(
+            [
+                'status'  => 'warning',
+                'message' => $message,
+                'data'    => $data
+            ],
+            $code
+        );
+    }
 }

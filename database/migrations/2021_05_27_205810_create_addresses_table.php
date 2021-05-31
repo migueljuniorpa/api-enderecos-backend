@@ -19,8 +19,8 @@ class CreateAddressesTable extends Migration
             $table->bigInteger('zipcode');
             $table->string('state');
             $table->string('city');
-            $table->string('neighborhood');
-            $table->string('street');
+            $table->string('neighborhood')->nullable();
+            $table->string('street')->nullable();
 
             $table->timestamps();
             $table->softDeletes();
